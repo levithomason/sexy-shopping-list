@@ -1,3 +1,6 @@
-body {
-  background: lightgray;
-}
+@import "variables";
+@import "global";
+
+// components
+@import "shopping-list";
+@import "header-footer";
