@@ -1,0 +1,25 @@
+{
+  "name": "sexy-shopping-list",
+  "version": "1.0.0",
+  "description": "Sexiest shopping list I'll never use.",
+  "main": "index.js",
+  "scripts": {
+    "precompile": "rm -rf build/*",
+    "compile": "npm run compile:js && npm run compile:styles",
+    "compile:js": "cp -R app/js build",
+    "compile:styles": "node-sass app/styles/main.scss build/styles/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levithomason/sexy-shopping-list.git"
+  },
+  "author": "Levi Thomason <me@levithomason.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/levithomason/sexy-shopping-list/issues"
+  },
+  "homepage": "https://github.com/levithomason/sexy-shopping-list#readme",
+  "dependencies": {
+    "node-sass": "^3.4.2"
+  }
+}
