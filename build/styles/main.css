@@ -1,30 +1,31 @@
+* {
+  box-sizing: border-box; }
+
 html,
 body {
   font-family: sans-serif;
   background: lightgray; }
 
-.lists {
+.lists .list {
+  display: block;
+  max-width: 400px;
+  background: cadetblue;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 30px;
   text-align: center; }
-  .lists .list {
-    display: inline-block;
-    list-style: none;
-    padding: 0;
-    margin: 0 0 30px;
-    text-align: center;
-    width: 100%;
-    max-width: 800px; }
-    .lists .list .list-header {
-      padding: 10px;
-      margin-bottom: 4px;
-      color: white;
-      background: darkmagenta;
-      border-radius: 4px; }
-    .lists .list .item {
-      padding: 10px;
-      background: whitesmoke;
-      border-radius: 4px;
-      margin-bottom: 4px;
-      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); }
+  .lists .list .list-header {
+    padding: 10px;
+    margin-bottom: 4px;
+    color: white;
+    background: darkmagenta;
+    border-radius: 4px; }
+  .lists .list .item {
+    padding: 10px;
+    background: whitesmoke;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); }
 
 footer,
 header {
@@ -32,3 +33,18 @@ header {
   padding: 30px;
   color: white;
   text-align: center; }
+
+.btn-bar {
+  background: white;
+  display: inline-block;
+  width: 400px;
+  max-width: 400px; }
+  .btn-bar.three-btns .btn {
+    width: 33.333%; }
+  .btn-bar .btn {
+    padding: 10px;
+    margin: 0;
+    float: left;
+    font-size: 16px;
+    background: none;
+    border: none; }

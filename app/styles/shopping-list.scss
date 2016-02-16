@@ -1,14 +1,13 @@
 .lists {
-  text-align: center;
 
   .list {
-    display: inline-block;
+    display: block;
+    max-width: 400px;
+    background: cadetblue;
     list-style: none;
     padding: 0;
-    margin: 0 0 $listVerticalMargin;
+    margin: 0 auto $listVerticalMargin;
     text-align: center;
-    width: 100%;
-    max-width: 800px;
 
     .list-header {
       padding: $listItemPadding;
