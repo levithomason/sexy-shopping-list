@@ -1,15 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import FilterableProductTable from './components/FilterableProductTable'
+
+import Header from './components/Header/Header'
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <FilterableProductTable />
-      </div>
+      <Header />
     )
   }
 }
 
-ReactDOM.render(<App />, document.querySelector('#root'))
+ReactDOM.render(<App />, document.getElementById('root'))
