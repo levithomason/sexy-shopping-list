@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run server\"  \"npm run watch\"",
-    "server": "live-server --watch=index.html,build",
+    "server": "live-server --watch=index.html,build,example",
     "precompile": "rm -rf build/*",
     "compile": "npm run compile:js && npm run compile:styles",
     "compile:js": "babel-node $(npm bin)/webpack",
