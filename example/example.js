@@ -2,6 +2,7 @@ let state = {
   items: [
     { name: 'hi' }
   ],
+  categories: [],
 }
 
 const render = () => {
@@ -9,21 +10,46 @@ const render = () => {
   // blow away old app
   app.textContent = null
 
-  // convert the items from the API into <li>{name}</li>
-  const items = state.items.map((item) => {
-    const itemEl = document.createElement('li')
-    itemEl.textContent = item.name
-    return itemEl
-  })
+  state.categories.forEach((category) => {
+    // { id: 123, name: 'Meat' }
+    //
+    // <ul class="list">
+    //   <li class="list-header">Meat</li>
+    //   <li class="item">Beef</li>
+    //   <li class="item">Ham</li>
+    // </ul>
 
-  // create a <ul> and append each <li>{name}</li>
-  const itemList = document.createElement('ul')
-  items.forEach((itemEl) => {
-    itemList.appendChild(itemEl)
-  })
+    // list
+    const listEl = document.createElement('ul')
+    listEl.setAttribute('class', 'list')
 
-  // render the entire <ul> into #app!
-  app.appendChild(itemList)
+    // header
+    const headerEl = document.createElement('li')
+    headerEl.setAttribute('class', 'list-header')
+    headerEl.textContent = category.name
+    listEl.appendChild(headerEl)
+
+    // items
+    state.items.forEach((item) => {
+      if (item.categoryId === category.id) {
+        // <li class="item">Beef</li>
+        const removeEl = document.createElement('button')
+        removeEl.addEventListener('click', () => {
+          removeItem(item.id)
+        })
+        removeEl.textContent = 'X'
+
+        const itemEl = document.createElement('li')
+        itemEl.setAttribute('class', 'item')
+        itemEl.textContent = item.name
+
+        itemEl.appendChild(removeEl)
+        listEl.appendChild(itemEl)
+      }
+    })
+
+    app.appendChild(listEl)
+  })
 }
 
 // render the initial state
@@ -35,6 +61,8 @@ const setState = (newState) => {
   render()
 }
 
+////////////////////////////////////////////////////////////////
+
 function getItems() {
   axios.get('https://ssla-lt.herokuapp.com/items')
     .then((res) => {
@@ -43,3 +71,27 @@ function getItems() {
       })
     })
 }
+
+function removeItem(id) {
+  axios.delete(`https://ssla-lt.herokuapp.com/items/${id}`)
+    .then(res => {
+      getItems()
+    })
+}
+
+function getCategories() {
+  axios.get('https://ssla-lt.herokuapp.com/categories')
+    .then((res) => {
+      setState({
+        categories: res.data,
+      })
+    })
+}
+
+function getAllData() {
+  getCategories()
+  getItems()
+}
+
+// init
+getAllData()
