@@ -3,7 +3,6 @@
   .list {
     display: block;
     max-width: 400px;
-    background: cadetblue;
     list-style: none;
     padding: 0;
     margin: 0 auto $listVerticalMargin;
@@ -11,16 +10,41 @@
 
     .list-header {
       padding: $listItemPadding;
-      margin-bottom: 4px;
       color: white;
       background: darkmagenta;
-      border-radius: 4px;
+    }
+
+    .new-item-input {
+      text-align: inherit;
+      padding: 10px;
+      margin-bottom: 4px;
+      width: 100%;
+      font-size: 1em;
+      border: 1px solid darkmagenta;
+    }
+
+    .remove-item-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: none;
+      border: none;
+      font-size: 2em;
+      padding: 0 0.5em 0 0;
+      line-height: 1;
+      opacity: 0.35;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
     }
 
     .item {
+      position: relative;
+      font-size: 1em;
       padding: 10px;
       background: whitesmoke;
-      border-radius: 4px;
       margin-bottom: 4px;
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
     }
