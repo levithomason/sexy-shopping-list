@@ -29,6 +29,25 @@ const render = () => {
     headerEl.textContent = category.name
     listEl.appendChild(headerEl)
 
+    // input item
+    const inputEl = document.createElement('input')
+    inputEl.setAttribute('placeholder', 'Add Item')
+    listEl.appendChild(inputEl)
+    listEl.addEventListener('keydown', (e) => {
+      switch (e.keyCode) {
+        // enter key
+        case 13:
+          createItem({
+            id: String(Math.random()).slice(2), // fake random id
+            categoryId: category.id,
+            name: e.target.value,
+          })
+          break
+        default:
+          break
+      }
+    })
+
     // items
     state.items.forEach((item) => {
       if (item.categoryId === category.id) {
@@ -75,6 +94,13 @@ function getItems() {
 function removeItem(id) {
   axios.delete(`https://ssla-lt.herokuapp.com/items/${id}`)
     .then(res => {
+      getItems()
+    })
+}
+
+function createItem(item) {
+  axios.post('https://ssla-lt.herokuapp.com/items', item)
+    .then((res) => {
       getItems()
     })
 }
