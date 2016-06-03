@@ -8,11 +8,11 @@
     "server": "live-server --watch=index.html,build,example",
     "precompile": "rm -rf build/*",
     "compile": "npm run compile:js && npm run compile:styles",
-    "compile:js": "babel-node $(npm bin)/webpack",
+    "compile:js": "webpack",
     "compile:styles": "node-sass app/styles/main.scss build/styles/main.css",
-    "watch": "npm run watch:js & npm run watch:styles",
+    "watch": "concurrently \"npm run watch:js\" \"npm run watch:styles\"",
     "watch:js": "npm run compile:js -- --watch",
-    "watch:styles": "watch 'npm run compile:styles' app/styles"
+    "watch:styles": "watch \"npm run compile:styles\" app/styles"
   },
   "repository": {
     "type": "git",

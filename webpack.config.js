@@ -1,4 +1,4 @@
-import path from 'path'
+const path = require('path')
 
 const webpackConfig = {
   entry: './app/App.js',
@@ -14,4 +14,4 @@ const webpackConfig = {
   devtool: 'source-map',
 }
 
-export default webpackConfig
+module.exports = webpackConfig
